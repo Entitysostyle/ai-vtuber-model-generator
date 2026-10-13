@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Native build artifacts
+*.pyd
+*.so
+*.dll
+*.lib
+*.exp
+*.obj
+src/ai_vtuber_model_generator/native/build/
+src/ai_vtuber_model_generator/dotnet/bin/
+src/ai_vtuber_model_generator/dotnet/obj/
+*.jar
+*.class
+
+# Model + asset caches (never commit generated rigs)
+models_cache/
+rigs_cache/
+blendshape_cache/
+outputs/
+*.vrm.bak
+*.moc3.bak
+*.onnx
+*.pt
+*.safetensors
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+*.local.toml
+secrets/
