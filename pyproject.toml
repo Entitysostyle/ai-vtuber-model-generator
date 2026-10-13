@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel", "cython>=3.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-vtuber-model-generator"
+version = "0.7.3"
+description = "Pipeline-driven AI VTuber model generator: ingest rigs, process blendshapes, drive Live2D/VRM/Unity outputs."
+readme = "CONTRIBUTING.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "ai-vtuber-model-generator contributors" }]
+keywords = ["vtuber", "live2d", "vrm", "avatar", "blendshape", "pipeline", "rigging"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+dependencies = [
+  "numpy>=1.26,<3",
+  "pillow>=10.2",
+  "pydantic>=2.6",
+  "structlog>=24.1",
+  "watchdog>=4.0",
+  "rich>=13.7",
+  "pyvts>=0.2.5",
+  "onnxruntime>=1.17",
+  "opencv-python-headless>=4.9",
+]
+
+[project.optional-dependencies]
+live2d = ["live2d-py>=0.4"]
+vrm = ["pygltflib>=1.16"]
+unity = ["pythonnet>=3.0.3"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.3", "mypy>=1.9"]
+
+[project.scripts]
+vtuber-gen = "ai_vtuber_model_generator.__main__:main"
+vtuber-watch = "ai_vtuber_model_generator.cli.watch_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
